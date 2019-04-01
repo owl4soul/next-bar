@@ -1,18 +1,12 @@
 package bar.products;
 
+public interface Build {
 
-public abstract class Product implements Production, Build {
-    String name;
-    int id;
-    int cost;
-
-    public abstract Product createProduct();
-
-    //BUILDER
-    public abstract static class Builder {
+    abstract class Builder {
         protected String name;
         protected int id;
         protected int cost;
+
 
         public Builder addName(String name) {
             this.name = name;
@@ -29,8 +23,6 @@ public abstract class Product implements Production, Build {
             return this;
         }
 
-        abstract public Product build();
+        abstract public Product buildd();
     }
-
-
 }
