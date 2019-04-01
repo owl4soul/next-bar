@@ -1,9 +1,21 @@
 package bar.products;
 
+import bar.Stock;
+import bar.tools.Nomenclature;
+import bar.tools.Stockable;
+import bar.tools.observatory.AbstractSubject;
+import bar.tools.observatory.Observer;
+import bar.tools.observatory.Subject;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Ingredient extends Product {
+public class Ingredient extends Product implements AbstractSubject {
+    {
+        //register observers: generalStock;
+        Stock generalStock = Stock.getGeneralStock();
+        AbstractSubject.super.registerObserver(generalStock);
+    }
     static Map<String, Product> ingredients = new HashMap<>();
 
 
@@ -13,6 +25,8 @@ public class Ingredient extends Product {
         this.cost = ingredientBuilder.cost;
         Nomenclature.mapProduct(ingredients, this);
         Nomenclature.ADD_TO_GRAND_MAP(this);
+        AbstractSubject.super.notifyObserver(this);
+
     }
 
     public static Ingredient createIngredient(String name, int id, int cost) {
@@ -20,10 +34,12 @@ public class Ingredient extends Product {
     }
 
 
+    //extends Product
     @Override
     public Ingredient createProduct(String name, int id, int cost) {
         return createIngredient(name, id, cost);
     }
+    /////////////
 
     //SUB-BUILDER
     public static class IngredientBuilder extends Builder {
@@ -32,4 +48,8 @@ public class Ingredient extends Product {
             return new Ingredient(this);
         }
     }
+    //////////
+
+
+
 }

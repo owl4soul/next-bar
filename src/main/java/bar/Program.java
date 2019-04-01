@@ -1,6 +1,7 @@
 package bar;
 
 import bar.products.*;
+import bar.tools.Stockable;
 
 public class Program {
     public static void main(String[] args) {
@@ -13,7 +14,10 @@ public class Program {
         System.out.println(i.getClass().getSimpleName());
 
 
-        System.out.println(DataBase.GRAND_MAP);
+        System.out.println(DataBase.getGrandMap());
+        Stock gen = Stock.getGeneralStock();
+        System.out.println(gen.getStock().toString());
+
 
     }
 }
