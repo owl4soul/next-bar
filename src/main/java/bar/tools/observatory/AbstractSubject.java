@@ -10,7 +10,9 @@ public interface AbstractSubject extends Subject {
 
     @Override
     default void registerObserver(Observer observer) {
-        observers.add(observer);
+        if (!observers.contains(observer)) {
+            observers.add(observer);
+        }
     }
 
     @Override

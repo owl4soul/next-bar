@@ -11,9 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Ingredient extends Product implements AbstractSubject {
+
     {
         //register observers: generalStock;
         Stock generalStock = Stock.getGeneralStock();
+
         AbstractSubject.super.registerObserver(generalStock);
     }
     static Map<String, Product> ingredients = new HashMap<>();

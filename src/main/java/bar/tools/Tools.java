@@ -19,16 +19,10 @@ public class Tools {
 
     }
 
-    public static Integer readInteger() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            int inputInteger = reader.read();
-            return inputInteger;
-        } catch (IOException e) {
-            System.out.println("ОШИБКА ПРИ ВВОДЕ ЧИСЛА!");
-            e.printStackTrace();
-        }
-        return null;
+    public static int readInteger() {
+        String inputString = readString();
+        int inputInt = Integer.parseInt(inputString);
+        return inputInt;
 
     }
 }

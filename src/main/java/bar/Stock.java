@@ -16,7 +16,7 @@ public class Stock implements Stockable, Observer {
 
 
     //PRIVATE CONSTRUCTOR
-    private Stock() {
+    public Stock() {
 
     }
 
@@ -40,7 +40,7 @@ public class Stock implements Stockable, Observer {
     @Override
     public void update(Product product) {
         String productName = product.getName();
-        System.out.println("В перечне появился новый продукт");
+        System.out.println("В перечне появился новый продукт: " + productName);
         System.out.println("Введите его изначальное количество на складе: ");
         int count = Tools.readInteger();
         stock.put(productName, count);
