@@ -12,7 +12,7 @@ public class Ingredient extends Product {
         this.id = ingredientBuilder.id;
         this.cost = ingredientBuilder.cost;
         Nomenclature.mapProduct(ingredients, this);
-        Nomenclature.ADD_TO_GRAND_MAP(ingredients, this);
+        Nomenclature.ADD_TO_GRAND_MAP(this);
     }
 
     public static Ingredient createIngredient(String name, int id, int cost) {
