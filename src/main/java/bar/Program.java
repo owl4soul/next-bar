@@ -4,19 +4,16 @@ import bar.products.*;
 
 public class Program {
     public static void main(String[] args) {
-        Product i = new Ingredient((Ingredient.IngredientBuilder) new Ingredient.IngredientBuilder().addName("Salvia").addCost(999).addId(6));
+
+        Product ii = new Ingredient.IngredientBuilder().build();
+        System.out.println(ii);
+        Product v = Ingredient.createIngredient("Husk", 66, 33);
+        Product i = Ingredient.createIngredient("Mesk", 99, 88);
         System.out.println(i);
+        System.out.println(i.getClass().getSimpleName());
 
-        Build a = new Addition(new Addition.Buildd().addName("Sure").addId(99).addCost(888).buildd());
-        System.out.println(a);
-        System.out.println(a.getClass().getSimpleName());
 
-        Build o = new Option(new Option.Buildd().addName("HYUY").addId(555).addCost(9).buildd());
-        System.out.println(o);
-
-        Build aa = new Addition.Buildd().addName("POLL").addId(8888).buildd();
-        System.out.println(aa);
-
+        System.out.println(DataBase.GRAND_MAP);
 
     }
 }

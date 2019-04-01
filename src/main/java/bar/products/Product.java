@@ -1,12 +1,12 @@
 package bar.products;
 
 
-public abstract class Product implements Production, Build {
-    String name;
-    int id;
-    int cost;
+public abstract class Product implements Production {
+    protected String name;
+    protected int id;
+    protected int cost;
 
-    public abstract Product createProduct();
+    public abstract Product createProduct(String name, int id, int cost);
 
     //BUILDER
     public abstract static class Builder {
