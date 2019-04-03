@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Ingredient extends Product implements AbstractSubject {
+    public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addId(9).addCost(8).build();
+
 
 
     static Map<String, Product> ingredients = new HashMap<>();
@@ -17,7 +19,7 @@ public class Ingredient extends Product implements AbstractSubject {
         this.name = ingredientBuilder.name;
         this.id = ingredientBuilder.id;
         this.cost = ingredientBuilder.cost;
-        Nomenclature.mapProduct(ingredients, this);
+//        Nomenclature.mapProduct(ingredients, this);
         AbstractSubject.super.notifyObserver(this);
 
     }
@@ -36,6 +38,8 @@ public class Ingredient extends Product implements AbstractSubject {
 
     //SUB-BUILDER
     public static class IngredientBuilder extends Builder {
+
+
         @Override
         public Ingredient build() {
             return new Ingredient(this);

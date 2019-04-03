@@ -22,7 +22,7 @@ public interface Nomenclature {
 
     static void mapProduct(Map<String, Product> nomenclature, Product product) {
         nomenclature.put(product.getName(), product);
-        ADD_TO_GRAND_MAP(product);
+//        ADD_TO_GRAND_MAP(product);
 
     }
 
