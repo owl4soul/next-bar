@@ -12,8 +12,11 @@ public class Recipe {
     public String nameRecipe;
     public Map<Product, Integer> recipe;
 
-    public static final Recipe ESPRESSO = new RecipeBuilder().setNameRecipe("espresso").addToRecipe(Ingredient.SHOT, 1).build();
-    public static final Recipe DOPPIO = new RecipeBuilder().setNameRecipe("espresso").addToRecipe(Ingredient.SHOT, 2).build();
+    public static final Recipe ESPRESSO = new RecipeBuilder().setNameRecipe("ESPRESSO").addToRecipe(Ingredient.SHOT, 1).build();
+    public static final Recipe DOPPIO = new RecipeBuilder().setNameRecipe("DOPPIO").addToRecipe(Ingredient.SHOT, 2).build();
+    public static final Recipe CAPPUCCINO = new RecipeBuilder().setNameRecipe("CAPPUCCINO").addToRecipe(Ingredient.SHOT, 2).build();
+    public static final Recipe LATTE = new RecipeBuilder().setNameRecipe("LATTE").addToRecipe(Ingredient.SHOT, 2).addToRecipe(Ingredient.MILK, 3).build();
+
 
 
 

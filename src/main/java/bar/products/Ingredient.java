@@ -9,29 +9,27 @@ import java.util.Map;
 
 public class Ingredient extends Product implements AbstractSubject, Nomenclature {
     static Map<String, Product> ingredients = new HashMap<>();
-    public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addId(9).addCost(8).build();
+    public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addCost(8).build();
+    public static final Ingredient MILK = (Ingredient) new IngredientBuilder().addName("MILK").addCost(8).build();
 
 
 
     public Ingredient(IngredientBuilder ingredientBuilder) {
         super(ingredientBuilder);
-//        this.name = ingredientBuilder.name;
-//        this.id = ingredientBuilder.id;
-//        this.cost = ingredientBuilder.cost;
         Nomenclature.mapProduct(ingredients, this);
         AbstractSubject.super.notifyObserver(this);
 
     }
 
-    public static Ingredient createIngredient(String name, int id, int cost) {
-        return (Ingredient) new IngredientBuilder().addName(name).addCost(cost).addId(id).build();
+    public static Ingredient createIngredient(String name, int cost) {
+        return (Ingredient) new IngredientBuilder().addName(name).addCost(cost).build();
     }
 
 
     //extends Product
     @Override
-    public Ingredient createProduct(String name, int id, int cost) {
-        return createIngredient(name, id, cost);
+    public Ingredient createProduct(String name, int cost) {
+        return createIngredient(name, cost);
     }
     /////////////
 

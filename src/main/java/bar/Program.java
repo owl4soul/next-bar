@@ -9,19 +9,14 @@ public class Program {
         DataBase db = new DataBase();
 
 
-//        Product ii = new Ingredient.IngredientBuilder().build();
-//        System.out.println(ii);
-        Product v = Ingredient.createIngredient("Husk", 66, 33);
-        Product i = Ingredient.createIngredient("Mesk", 99, 88);
-        System.out.println(i);
-        System.out.println(i.getClass().getSimpleName());
 
+        Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).setNoWayAdd("SHOT").addAddition(Ingredient.SHOT, 99).build();
 
         System.out.println(DataBase.getGrandMap());
 
         System.out.println(gen.getStock().toString());
 
-        Product dd = new Drink.DrinkBuilder().addName("Double espresso").addId(11).addCost(12)
+        Product dd = new Drink.DrinkBuilder().addName("Double espresso").addCost(12)
                 .setConsist(Recipe.DOPPIO).build();
 
         System.out.println(dd);

@@ -3,10 +3,8 @@ package bar.products;
 
 public interface Production {
 
-    Product createProduct(String name, int id, int cost);
+    Product createProduct(String name, int cost);
 
-//    void removeProduct();
-//
-//    void showProduct();
+
 
 }
