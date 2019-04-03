@@ -14,9 +14,10 @@ public class Ingredient extends Product implements AbstractSubject, Nomenclature
 
 
     public Ingredient(IngredientBuilder ingredientBuilder) {
-        this.name = ingredientBuilder.name;
-        this.id = ingredientBuilder.id;
-        this.cost = ingredientBuilder.cost;
+        super(ingredientBuilder);
+//        this.name = ingredientBuilder.name;
+//        this.id = ingredientBuilder.id;
+//        this.cost = ingredientBuilder.cost;
         Nomenclature.mapProduct(ingredients, this);
         AbstractSubject.super.notifyObserver(this);
 

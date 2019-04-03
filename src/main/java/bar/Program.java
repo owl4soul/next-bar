@@ -2,7 +2,6 @@ package bar;
 
 import bar.products.*;
 import bar.products.drinks.Drink;
-import bar.tools.Stockable;
 
 public class Program {
     public static void main(String[] args) {
@@ -22,7 +21,7 @@ public class Program {
 
         System.out.println(gen.getStock().toString());
 
-        Product dd = new Drink.DrinkBuilder("coffee", 4, 4).build();
+        Product dd = new Drink.DrinkBuilder().setConsist(Recipe.DOPPIO).build();
         System.out.println(dd);
 
 

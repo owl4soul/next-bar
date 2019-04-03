@@ -6,6 +6,12 @@ public abstract class Product implements Production {
     protected int id;
     protected int cost;
 
+    public Product(Builder builder) {
+        this.name = builder.name;
+        this.id = builder.id;
+        this.cost = builder.cost;
+    }
+
     public abstract Product createProduct(String name, int id, int cost);
 
     //BUILDER

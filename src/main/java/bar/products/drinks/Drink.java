@@ -9,42 +9,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Drink extends Product implements Production {
-//    {
-//        Drink d = (Drink) new DrinkBuilder("G", 9, 88).addToConsist(Ingredient.SHOT, 2).build();
-//        System.out.println(d);
-//    }
-
     protected Map<Product, Integer> consist = new HashMap<>();
 
-//    public Drink(String name, int id, int cost) {
-//        this.name = name;
-//        this.id = id;
-//        this.cost = cost;
-//    }
 
     public Drink(DrinkBuilder drinkBuilder) {
-        this.name = drinkBuilder.name;
-        this.id = drinkBuilder.id;
-        this.cost = drinkBuilder.cost;
-//        this.consist = drinkBuilder.consist;
+        super(drinkBuilder);//todo or variables need to be put as args?
+        this.consist = drinkBuilder.consist;
+//        this.recipe = drinkBuilder.recipe;
     }
 
     @Override
     public Product createProduct(String name, int id, int cost) {
-        return new DrinkBuilder(name, id, cost).build();
+        return new DrinkBuilder().addName(name).addId(id).addCost(cost).build();
     }
 
     //BUILDER
-    public static class DrinkBuilder extends Recipe.RecipeBuilder {
-        public String name;
-        public int id;
-        public int cost;
-        Map<Product, Integer> consist = new HashMap<>();
+    public static class DrinkBuilder extends Builder{
+        public Map<Product, Integer> consist = new HashMap<>();
 
-        public DrinkBuilder(String name, int id, int cost) {
-            this.name = name;
-            this.id = id;
-            this.cost = cost;
+//        public DrinkBuilder(String name, int id, int cost) {
+//            this.name = name;
+//            this.id = id;
+//            this.cost = cost;
+//        }
+
+        public DrinkBuilder setConsist(Recipe recipe) {
+            consist = recipe.recipe;
+            return this;
         }
 
         public Product build() {
