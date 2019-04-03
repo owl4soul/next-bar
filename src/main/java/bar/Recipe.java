@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Recipe implements Production {
+    static Map<String, Recipe> recipeBook = new HashMap<>();
     String nameRecipe;
     Map<Product, Integer> consist;
 
-    static Map<String, Recipe> recipeBook = new HashMap<>();
 
 
     private Recipe(RecipeBuilder builder) {
@@ -20,10 +20,7 @@ public abstract class Recipe implements Production {
         recipeBook.put("default", this);
     }
 
-//    static generation method of Recipe's objects
-//    public static Recipe getInstance() {
-//
-//    }
+
 
 
 

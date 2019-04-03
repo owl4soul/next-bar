@@ -9,28 +9,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Drink extends Product implements Production {
-    {
-        Drink d = (Drink) new DrinkBuilder("G", 9, 88).addToConsist(Ingredient.SHOT, 2).build();
-    }
+//    {
+//        Drink d = (Drink) new DrinkBuilder("G", 9, 88).addToConsist(Ingredient.SHOT, 2).build();
+//        System.out.println(d);
+//    }
 
     protected Map<Product, Integer> consist = new HashMap<>();
 
-    public Drink(String name, int id, int cost) {
-        this.name = name;
-        this.id = id;
-        this.cost = cost;
-    }
+//    public Drink(String name, int id, int cost) {
+//        this.name = name;
+//        this.id = id;
+//        this.cost = cost;
+//    }
 
     public Drink(DrinkBuilder drinkBuilder) {
         this.name = drinkBuilder.name;
         this.id = drinkBuilder.id;
         this.cost = drinkBuilder.cost;
-        this.consist = drinkBuilder.consist;
+//        this.consist = drinkBuilder.consist;
     }
 
     @Override
     public Product createProduct(String name, int id, int cost) {
-        return new Drink(name, id, cost);
+        return new DrinkBuilder(name, id, cost).build();
     }
 
     //BUILDER
@@ -46,7 +47,7 @@ public class Drink extends Product implements Production {
             this.cost = cost;
         }
 
-        public Production build() {
+        public Product build() {
             return new Drink(this);
         }
 
