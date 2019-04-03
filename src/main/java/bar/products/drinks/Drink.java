@@ -11,14 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Drink extends Product implements Production, AbstractSubject {
+    public Recipe drinkRecipe;
     public Map<Product, Integer> consist = new HashMap<>();
-    public ArrayList<String> noWayAdd = new ArrayList<>();
 
 
     public Drink(DrinkBuilder drinkBuilder) {
         super(drinkBuilder);
         this.consist = drinkBuilder.consist;
-        this.noWayAdd = drinkBuilder.noWayAdd;
+//        this.noWayAdd = drinkBuilder.noWayAdd;
         AbstractSubject.super.notifyObserver(this);
     }
 
@@ -29,6 +29,7 @@ public class Drink extends Product implements Production, AbstractSubject {
 
     //BUILDER
     public static class DrinkBuilder extends Builder {
+        public Recipe drinkRecipe;
         public Map<Product, Integer> consist = new HashMap<>();
         public ArrayList<String> noWayAdd = new ArrayList<>();
 
@@ -41,20 +42,17 @@ public class Drink extends Product implements Production, AbstractSubject {
             return (DrinkBuilder) super.addCost(cost);
         }
 
+
         public DrinkBuilder setConsist(Recipe recipe) {
+            drinkRecipe = recipe;
             consist = recipe.recipe;
             return this;
         }
 
-        public DrinkBuilder setNoWayAdd(String... productNames) {
-            for (String nameProduct : productNames) {
-                noWayAdd.add(nameProduct);
-            }
-            return this;
-        }
+
 
         public DrinkBuilder addAddition(Ingredient ingredient, int count) {
-            if (noWayAdd.contains(ingredient.getName())) {
+            if (drinkRecipe.noWayAdd.contains(ingredient.getName())) {
                 System.out.println("В данный напиток нельзя добавить ингредиент: " + ingredient.getName());
             } else {
                 int countPresent = consist.get(ingredient);

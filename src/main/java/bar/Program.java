@@ -10,7 +10,7 @@ public class Program {
 
 
 
-        Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).setNoWayAdd("SHOT").addAddition(Ingredient.SHOT, 99).build();
+        Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).addAddition(Ingredient.SHOT, 99).build();
 
         System.out.println(DataBase.getGrandMap());
 
