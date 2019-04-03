@@ -5,6 +5,7 @@ import bar.tools.Stockable;
 
 public class Program {
     public static void main(String[] args) {
+        Stock gen = Stock.getGeneralStock();
 
         Product ii = new Ingredient.IngredientBuilder().build();
         System.out.println(ii);
@@ -15,7 +16,7 @@ public class Program {
 
 
         System.out.println(DataBase.getGrandMap());
-        Stock gen = Stock.getGeneralStock();
+
         System.out.println(gen.getStock().toString());
 
 

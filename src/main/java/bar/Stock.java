@@ -3,12 +3,14 @@ package bar;
 import bar.products.Product;
 import bar.tools.Stockable;
 import bar.tools.Tools;
+import bar.tools.observatory.AbstractSubject;
 import bar.tools.observatory.Observer;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Stock implements Stockable, Observer {
+public class Stock implements Stockable, Observer, AbstractSubject {
+
     private Map<String, Integer> stock = new HashMap<>();// String productName = Integer countInStock
 
     public static Stock generalStock = getInstance();
@@ -17,11 +19,13 @@ public class Stock implements Stockable, Observer {
 
     //PRIVATE CONSTRUCTOR
     public Stock() {
+        AbstractSubject.super.registerObserver(this);         //register observers: generalStock;
 
     }
 
     //Static initialization
     public static Stock getInstance() {
+
         return new Stock();
     }
 
