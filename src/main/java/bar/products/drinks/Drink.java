@@ -4,18 +4,19 @@ import bar.Recipe;
 import bar.products.Ingredient;
 import bar.products.Product;
 import bar.products.Production;
+import bar.tools.observatory.AbstractSubject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Drink extends Product implements Production {
-    protected Map<Product, Integer> consist = new HashMap<>();
+public class Drink extends Product implements Production, AbstractSubject {
+    public Map<Product, Integer> consist = new HashMap<>();
 
 
     public Drink(DrinkBuilder drinkBuilder) {
         super(drinkBuilder);//todo or variables need to be put as args?
         this.consist = drinkBuilder.consist;
-//        this.recipe = drinkBuilder.recipe;
+        AbstractSubject.super.notifyObserver(this);
     }
 
     @Override
@@ -24,14 +25,19 @@ public class Drink extends Product implements Production {
     }
 
     //BUILDER
-    public static class DrinkBuilder extends Builder{
+    public static class DrinkBuilder extends Builder {
         public Map<Product, Integer> consist = new HashMap<>();
 
-//        public DrinkBuilder(String name, int id, int cost) {
-//            this.name = name;
-//            this.id = id;
-//            this.cost = cost;
-//        }
+        public DrinkBuilder addName(String name) {
+            return (DrinkBuilder) super.addName(name);
+        }
+
+        public DrinkBuilder addId(int id) {
+            return (DrinkBuilder) super.addId(id);
+        }
+        public DrinkBuilder addCost(int cost) {
+            return (DrinkBuilder) super.addCost(cost);
+        }
 
         public DrinkBuilder setConsist(Recipe recipe) {
             consist = recipe.recipe;

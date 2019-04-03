@@ -21,8 +21,11 @@ public class Program {
 
         System.out.println(gen.getStock().toString());
 
-        Product dd = new Drink.DrinkBuilder().setConsist(Recipe.DOPPIO).build();
+        Product dd = new Drink.DrinkBuilder().addName("Double espresso").addId(11).addCost(12)
+                .setConsist(Recipe.DOPPIO).build();
+
         System.out.println(dd);
+        System.out.println(gen.getStock().values());
 
 
 
