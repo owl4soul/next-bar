@@ -9,8 +9,12 @@ import java.util.Map;
 
 public class Ingredient extends Product implements AbstractSubject, Nomenclature {
     static Map<String, Product> ingredients = new HashMap<>();
-    public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addCost(8).build();
-    public static final Ingredient MILK = (Ingredient) new IngredientBuilder().addName("MILK").addCost(8).build();
+    public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addCost(20).build();
+    public static final Ingredient MILK = (Ingredient) new IngredientBuilder().addName("MILK").addCost(30).build();
+    public static final Ingredient SUGAR = (Ingredient) new IngredientBuilder().addName("SUGAR").addCost(1).build();
+    public static final Ingredient CINNAMON = (Ingredient) new IngredientBuilder().addName("CINNAMON").addCost(3).build();
+    public static final Ingredient ICE = (Ingredient) new IngredientBuilder().addName("ICE").addCost(2).build();
+
 
 
 
@@ -26,10 +30,11 @@ public class Ingredient extends Product implements AbstractSubject, Nomenclature
     }
 
 
-    //extends Product
+    //extends Product which implements Production
     @Override
     public Ingredient createProduct(String name, int cost) {
         return createIngredient(name, cost);
+
     }
     /////////////
 

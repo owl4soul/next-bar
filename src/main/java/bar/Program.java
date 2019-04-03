@@ -2,6 +2,7 @@ package bar;
 
 import bar.products.*;
 import bar.products.drinks.Drink;
+import bar.tools.Calculator;
 
 public class Program {
     public static void main(String[] args) {
@@ -22,6 +23,7 @@ public class Program {
         System.out.println(dd);
         System.out.println(gen.getStock().values());
 
+        Calculator.calcPrice(dd);
 
 
     }
