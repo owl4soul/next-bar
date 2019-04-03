@@ -7,19 +7,17 @@ import bar.tools.observatory.AbstractSubject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Ingredient extends Product implements AbstractSubject {
+public class Ingredient extends Product implements AbstractSubject, Nomenclature {
+    static Map<String, Product> ingredients = new HashMap<>();
     public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addId(9).addCost(8).build();
 
-
-
-    static Map<String, Product> ingredients = new HashMap<>();
 
 
     public Ingredient(IngredientBuilder ingredientBuilder) {
         this.name = ingredientBuilder.name;
         this.id = ingredientBuilder.id;
         this.cost = ingredientBuilder.cost;
-//        Nomenclature.mapProduct(ingredients, this);
+        Nomenclature.mapProduct(ingredients, this);
         AbstractSubject.super.notifyObserver(this);
 
     }
