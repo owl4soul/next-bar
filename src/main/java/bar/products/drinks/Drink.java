@@ -73,7 +73,7 @@ public class Drink extends Product implements Production, AbstractSubject {
 
         //Add addition to drink
         public Drink addAddition(Ingredient ingredient, int count) {
-            if (this.drinkRecipe.noWayAdd.contains(ingredient.getName())) {
+            if (this.drinkRecipe.noWayAdd.contains(ingredient)) {
                 System.out.println("В данный напиток нельзя добавить ингредиент: " + ingredient.getName());
             } else {
                 int countPresent = this.consist.get(ingredient);

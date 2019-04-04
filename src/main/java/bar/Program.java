@@ -11,6 +11,9 @@ public class Program {
 
 
 
+
+
+
         Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).build();
         ((Drink) d).addAddition(Ingredient.SHOT, 99);
 
@@ -33,5 +36,10 @@ public class Program {
         d.show();
 
 
+    }
+
+    public static void init() {
+        Stock gen = Stock.getGeneralStock();
+        DataBase db = new DataBase();
     }
 }

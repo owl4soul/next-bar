@@ -13,12 +13,12 @@ public class Recipe {
 
     public String nameRecipe;
     public Map<Product, Integer> recipe;
-    public ArrayList<String> noWayAdd = new ArrayList<>();
+    public ArrayList<Product> noWayAdd = new ArrayList<>();
 
-    public static final Recipe ESPRESSO = new RecipeBuilder().setNameRecipe("ESPRESSO").addToRecipe(Ingredient.SHOT, 1).build();
-    public static final Recipe DOPPIO = new RecipeBuilder().setNameRecipe("DOPPIO").addToRecipe(Ingredient.SHOT, 2).build();
-    public static final Recipe CAPPUCCINO = new RecipeBuilder().setNameRecipe("CAPPUCCINO").addToRecipe(Ingredient.SHOT, 2).build();
-    public static final Recipe LATTE = new RecipeBuilder().setNameRecipe("LATTE").addToRecipe(Ingredient.SHOT, 2).addToRecipe(Ingredient.MILK, 3).setNoWayAdd("SHOT").build(); //TODO change noWay
+    public static final Recipe ESPRESSO = new RecipeBuilder().setNameRecipe("ESPRESSO").addToRecipe(Ingredient.SHOT, 1).setNoWayAdd().build();
+    public static final Recipe DOPPIO = new RecipeBuilder().setNameRecipe("DOPPIO").addToRecipe(Ingredient.SHOT, 2).setNoWayAdd().build();
+    public static final Recipe CAPPUCCINO = new RecipeBuilder().setNameRecipe("CAPPUCCINO").addToRecipe(Ingredient.SHOT, 2).addToRecipe(Ingredient.MILK, 3).setNoWayAdd().build();
+    public static final Recipe LATTE = new RecipeBuilder().setNameRecipe("LATTE").addToRecipe(Ingredient.SHOT, 1).addToRecipe(Ingredient.MILK, 4).setNoWayAdd(Ingredient.SHOT).build();
 
 
 
@@ -36,7 +36,7 @@ public class Recipe {
     public static class RecipeBuilder {
         protected String nameRecipe;
         protected Map<Product, Integer> recipe = new HashMap<>();
-        public ArrayList<String> noWayAdd = new ArrayList<>();
+        public ArrayList<Product> noWayAdd = new ArrayList<>();
 
 
         public RecipeBuilder setNameRecipe(String nameRecipe) {
@@ -45,8 +45,8 @@ public class Recipe {
         }
 
 
-        public RecipeBuilder setNoWayAdd(String... productNames) {
-            for (String nameProduct : productNames) {
+        public RecipeBuilder setNoWayAdd(Product... productNames) {
+            for (Product nameProduct : productNames) {
                 noWayAdd.add(nameProduct);
             }
             return this;
