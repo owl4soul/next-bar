@@ -19,6 +19,15 @@ public class Program {
         System.out.println(generalStock.getStock().values());
         System.out.println(DataBase.getGrandMap());
 
+        Product coff = Bar.orderByRecipe();
+        System.out.println("________first instance_______");
+        coff.show();
+        Bar.orderAddition(coff);
+//        coff = Bar.orderAddition(coff);
+
+        System.out.println("________after modification______");
+        coff.show();
+
 
 //
 //
