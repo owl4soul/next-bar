@@ -20,7 +20,6 @@ public abstract class Calculator {
         }
 
         int result = addedCost + primeCost;
-        System.out.println(result);
         return result;
     }
 }

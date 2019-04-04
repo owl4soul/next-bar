@@ -35,6 +35,23 @@ public abstract class Product implements Production {
     ////////////////
 
 
+    public static void showDefault(Product product) {
+        String s1 = "Класс продукта: " + product.getClass().getSimpleName() + "\n";
+        String s2 = "Имя продукта: " + product.getName() + "\n";
+        System.out.println(s1 + s2);
+    }
+
+    public abstract void show();
+
+
+    @Override
+    public String toString() {
+        String output = "[" + this.getClass().getSimpleName()
+                + "."+ this.getName()
+                + "_" + this.getCost() + "$" + "]";
+        return output;
+    }
+
     //Getters and Setters
     public String getName() {
         return name;

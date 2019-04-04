@@ -50,5 +50,15 @@ public class Ingredient extends Product implements AbstractSubject, Nomenclature
     //////////
 
 
+    @Override
+    public void show() {
+        Product.showDefault(this);
+        String s1 = "Стоимость ингредиента за единицу измерения: " + this.getCost() + "\n";
+        System.out.println(s1);
+    }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

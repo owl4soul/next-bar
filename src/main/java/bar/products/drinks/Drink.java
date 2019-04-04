@@ -4,6 +4,7 @@ import bar.Recipe;
 import bar.products.Ingredient;
 import bar.products.Product;
 import bar.products.Production;
+import bar.tools.Calculator;
 import bar.tools.observatory.AbstractSubject;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Drink extends Product implements Production, AbstractSubject {
 
     public Drink(DrinkBuilder drinkBuilder) {
         super(drinkBuilder);
+        this.drinkRecipe = drinkBuilder.drinkRecipe;
         this.consist = drinkBuilder.consist;
 //        this.noWayAdd = drinkBuilder.noWayAdd;
         AbstractSubject.super.notifyObserver(this);
@@ -51,17 +53,17 @@ public class Drink extends Product implements Production, AbstractSubject {
 
 
 
-        public DrinkBuilder addAddition(Ingredient ingredient, int count) {
-            if (drinkRecipe.noWayAdd.contains(ingredient.getName())) {
-                System.out.println("В данный напиток нельзя добавить ингредиент: " + ingredient.getName());
-            } else {
-                int countPresent = consist.get(ingredient);
-                int countAdded = count;
-                int countUpdated = countPresent + countAdded;
-                consist.put(ingredient, countUpdated);
-            }
-            return this;
-        }
+//        public DrinkBuilder addAddition(Ingredient ingredient, int count) {
+//            if (drinkRecipe.noWayAdd.contains(ingredient.getName())) {
+//                System.out.println("В данный напиток нельзя добавить ингредиент: " + ingredient.getName());
+//            } else {
+//                int countPresent = consist.get(ingredient);
+//                int countAdded = count;
+//                int countUpdated = countPresent + countAdded;
+//                consist.put(ingredient, countUpdated);
+//            }
+//            return this;
+//        }
 
             @Override
             public Product build () {
@@ -69,4 +71,34 @@ public class Drink extends Product implements Production, AbstractSubject {
             }
         }
 
+        //Add addition to drink
+        public Drink addAddition(Ingredient ingredient, int count) {
+            if (this.drinkRecipe.noWayAdd.contains(ingredient.getName())) {
+                System.out.println("В данный напиток нельзя добавить ингредиент: " + ingredient.getName());
+            } else {
+                int countPresent = this.consist.get(ingredient);
+                int countAdded = count;
+                int countUpdated = countPresent + countAdded;
+                this.consist.put(ingredient, countUpdated);
+            }
+            return this;
+        }
+
+    @Override
+    public void show() {
+        Product.showDefault(this);
+        String s1 = "Напиток изготовлен по рецепту: " + this.drinkRecipe.nameRecipe + "\n";
+        String s2 = "Полный состав напитка: " + this.consist + "\n";
+        int fullPrice = Calculator.calcPrice(this);
+        String s3 = "Итоговая стоимость напитка: " + fullPrice + "\n";
+        System.out.println(s1 + s2 + s3);
     }
+
+    @Override
+    public String toString() {
+        String output = super.toString() + " -> "
+                + drinkRecipe.nameRecipe + ": "
+                + consist + "]";
+        return output;
+    }
+}

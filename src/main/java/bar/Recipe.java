@@ -45,15 +45,15 @@ public class Recipe {
         }
 
 
-        public RecipeBuilder addToRecipe(Product product, int count) {
-            recipe.put(product, count);
-            return this;
-        }
-
         public RecipeBuilder setNoWayAdd(String... productNames) {
             for (String nameProduct : productNames) {
                 noWayAdd.add(nameProduct);
             }
+            return this;
+        }
+
+        public RecipeBuilder addToRecipe(Product product, int count) {
+            recipe.put(product, count);
             return this;
         }
 

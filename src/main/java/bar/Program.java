@@ -11,7 +11,8 @@ public class Program {
 
 
 
-        Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).addAddition(Ingredient.SHOT, 99).build();
+        Product d = new Drink.DrinkBuilder().addName("Latte-latte").addCost(12).setConsist(Recipe.LATTE).build();
+        ((Drink) d).addAddition(Ingredient.SHOT, 99);
 
         System.out.println(DataBase.getGrandMap());
 
@@ -24,6 +25,12 @@ public class Program {
         System.out.println(gen.getStock().values());
 
         Calculator.calcPrice(dd);
+
+        dd.toString();
+
+        dd.show();
+        System.out.println("_____________");
+        d.show();
 
 
     }
