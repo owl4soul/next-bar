@@ -1,7 +1,6 @@
 package bar.products;
 
 import bar.tools.Nomenclature;
-import bar.tools.Tools;
 import bar.tools.observatory.AbstractSubject;
 import bar.tools.observatory.Observer;
 
@@ -9,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataBase implements Observer, AbstractSubject {
-        static Map<String, Map<String, Product>> GRAND_MAP = new HashMap<>();
+    static Map<String, Map<String, Product>> GRAND_MAP = new HashMap<>();
 
     public DataBase() {
         //registration as observer

@@ -25,7 +25,6 @@ public interface Stockable {
         for (Product ingredient : ingredients) {
             String name = ingredient.getName();
             int countToRemove = ((Drink) product).consist.get(ingredient);
-//            removeCountFromStock(s, name, countToRemove);
             int lastCountValue = s.stock.get(name);
             int resultCountValue = lastCountValue - countToRemove;
             s.stock.put(name, resultCountValue);

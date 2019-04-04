@@ -2,35 +2,25 @@ package bar;
 
 import bar.products.Ingredient;
 import bar.products.Product;
-import bar.products.drinks.Drink;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum  Recipe {
-    ESPRESSO (new RecipeBuilder().setNameRecipe("ESPRESSO").addToRecipe(Ingredient.SHOT, 1).setNoWayAdd()),
-    DOPPIO (new RecipeBuilder().setNameRecipe("DOPPIO").addToRecipe(Ingredient.SHOT, 2).setNoWayAdd()),
-    CAPPUCCINO (new RecipeBuilder().setNameRecipe("CAPPUCCINO").addToRecipe(Ingredient.SHOT, 2).addToRecipe(Ingredient.MILK, 3).setNoWayAdd()),
-    LATTE (new RecipeBuilder().setNameRecipe("LATTE").addToRecipe(Ingredient.SHOT, 1).addToRecipe(Ingredient.MILK, 4).setNoWayAdd(Ingredient.SHOT));
-
-
-//    static Map<String, Recipe> recipeBook = Recipe.values(); //Consist all recipes
+public enum Recipe {
+    ESPRESSO(new RecipeBuilder().setNameRecipe("ESPRESSO").addToRecipe(Ingredient.SHOT, 1).setNoWayAdd()),
+    DOPPIO(new RecipeBuilder().setNameRecipe("DOPPIO").addToRecipe(Ingredient.SHOT, 2).setNoWayAdd()),
+    CAPPUCCINO(new RecipeBuilder().setNameRecipe("CAPPUCCINO").addToRecipe(Ingredient.SHOT, 2).addToRecipe(Ingredient.MILK, 3).setNoWayAdd()),
+    LATTE(new RecipeBuilder().setNameRecipe("LATTE").addToRecipe(Ingredient.SHOT, 1).addToRecipe(Ingredient.MILK, 4).setNoWayAdd(Ingredient.SHOT));
 
     public String nameRecipe;
     public Map<Product, Integer> recipe;
     public ArrayList<Product> noWayAdd;
 
-
-
-
-
-    private Recipe(RecipeBuilder builder) {
+    Recipe(RecipeBuilder builder) {
         this.nameRecipe = builder.nameRecipe;
         this.recipe = builder.recipe;
         this.noWayAdd = builder.noWayAdd;
-
-//        recipeBook.put("default", this);
     }
 
 
@@ -60,8 +50,5 @@ public enum  Recipe {
         }
 
     }
-
-
-
 
 }

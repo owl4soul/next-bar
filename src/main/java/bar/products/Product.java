@@ -1,7 +1,7 @@
 package bar.products;
 
 
-public abstract class Product implements Production {
+public abstract class Product {
     protected String name;
     protected int cost;
 
@@ -10,7 +10,6 @@ public abstract class Product implements Production {
         this.cost = builder.cost;
     }
 
-    public abstract Product createProduct(String name, int cost);
 
     //BUILDER
     public abstract static class Builder {
@@ -22,17 +21,13 @@ public abstract class Product implements Production {
             return this;
         }
 
-
         public Builder addCost(int cost) {
             this.cost = cost;
             return this;
         }
 
-
-
         abstract public Product build();
     }
-    ////////////////
 
 
     public static void showDefault(Product product) {
@@ -47,7 +42,7 @@ public abstract class Product implements Production {
     @Override
     public String toString() {
         String output = "[" + this.getClass().getSimpleName()
-                + "."+ this.getName()
+                + "." + this.getName()
                 + "_" + this.getCost() + "$" + "]";
         return output;
     }
@@ -68,5 +63,4 @@ public abstract class Product implements Production {
     public void setCost(int cost) {
         this.cost = cost;
     }
-    //////////////////
 }

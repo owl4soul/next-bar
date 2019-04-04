@@ -1,10 +1,8 @@
 package bar.tools;
 
-import bar.products.Ingredient;
 import bar.products.Product;
 import bar.products.drinks.Drink;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public abstract class Calculator {
