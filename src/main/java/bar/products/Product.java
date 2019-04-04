@@ -37,7 +37,7 @@ public abstract class Product implements Production {
 
     public static void showDefault(Product product) {
         String s1 = "Класс продукта: " + product.getClass().getSimpleName() + "\n";
-        String s2 = "Имя продукта: " + product.getName() + "\n";
+        String s2 = "Имя продукта: " + product.getName();
         System.out.println(s1 + s2);
     }
 

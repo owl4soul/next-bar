@@ -90,7 +90,7 @@ public class Drink extends Product implements Production, AbstractSubject {
         String s1 = "Напиток изготовлен по рецепту: " + this.drinkRecipe.nameRecipe + "\n";
         String s2 = "Полный состав напитка: " + this.consist + "\n";
         int fullPrice = Calculator.calcPrice(this);
-        String s3 = "Итоговая стоимость напитка: " + fullPrice + "\n";
+        String s3 = "Итоговая стоимость напитка: " + fullPrice + "$" + "\n";
         System.out.println(s1 + s2 + s3);
     }
 
