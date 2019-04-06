@@ -48,11 +48,13 @@ public class Stock implements Stockable, Observer, AbstractSubject {
     @Override
     public void update(Product product) {
         if (product instanceof Ingredient) {
-            String productName = product.getName();
-            System.out.println("В перечне появился новый продукт: " + productName);
-            System.out.println("Введите его изначальное количество на складе: ");
-            int count = Tools.readInteger();
-            stock.put(productName, count);
+            if ((product).getName() != "NULL") {
+                String productName = product.getName();
+                System.out.println("В перечне появился новый продукт: " + productName);
+                System.out.println("Введите его изначальное количество на складе: ");
+                int count = Tools.readInteger();
+                stock.put(productName, count);
+            }
         } else if (product instanceof Drink) {
             System.out.println("Создан новый напиток");
             Stockable.removeFromStock(generalStock, product);

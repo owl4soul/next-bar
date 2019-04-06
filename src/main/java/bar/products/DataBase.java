@@ -22,7 +22,9 @@ public class DataBase implements Observer, AbstractSubject {
     @Override
     public void update(Product product) {
         String productName = product.getName();
-        System.out.println("Появился новый продукт: " + productName);
-        Nomenclature.ADD_TO_GRAND_MAP(product);
+        if (productName != "NULL") {
+            System.out.println("Новый продукт добавлен в базу данных: " + productName);
+            Nomenclature.ADD_TO_GRAND_MAP(product);
+        }
     }
 }

@@ -62,7 +62,7 @@ public class Bar implements AbstractSubject {
 
     public Drink createDrink() {
         Drink drink = (Drink) orderWithAddition(orderByRecipe());
-        if (!(drink.getConsist().containsKey("NuLL"))) {
+        if (!(drink.getConsist().containsKey(Ingredient.NULL))) {
             drink.notifyObserver();
         }
         return drink;
