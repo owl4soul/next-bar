@@ -23,6 +23,13 @@ public class Stock implements Stockable, Observer, AbstractSubject {
         AbstractSubject.super.registerObserver(this);
     }
 
+    public void showStock() {
+        System.out.println("Содержимое склада");
+        for (Map.Entry entry : stock.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
+    }
+
     //Static initialization
     public static Stock getInstance() {
 

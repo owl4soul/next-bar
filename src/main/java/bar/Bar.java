@@ -41,8 +41,8 @@ public class Bar {
             ((Drink) product).addAddition((Ingredient) selectedAddition, 1);
             orderAddition(product);
         } else {
+            ((Drink) product).notifyObserver(product);
             return;
         }
-
     }
 }

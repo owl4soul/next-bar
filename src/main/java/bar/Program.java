@@ -16,6 +16,7 @@ public class Program {
         ddd.show();
 
         System.out.println(generalStock.getStock().values());
+        generalStock.showStock();
         System.out.println(DataBase.getGrandMap());
 
         Product coff = Bar.orderByRecipe();
@@ -29,6 +30,7 @@ public class Program {
 
         System.out.println("______stock show values______");
         System.out.println(generalStock.getStock().values());
+        generalStock.showStock();
     }
 
     public static void init() {

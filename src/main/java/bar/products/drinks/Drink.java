@@ -21,7 +21,7 @@ public class Drink extends Product implements AbstractSubject {
         this.drinkRecipe = drinkBuilder.drinkRecipe;
         this.consist = drinkBuilder.consist;
 
-        AbstractSubject.super.notifyObserver(this); //TODO BUG IS HERE
+//        AbstractSubject.super.notifyObserver(this); //TODO BUG IS HERE
     }
 
 
