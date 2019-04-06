@@ -32,7 +32,6 @@ public class Stock implements Stockable, Observer, AbstractSubject {
 
     //Static initialization
     public static Stock getInstance() {
-
         return new Stock();
     }
 

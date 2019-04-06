@@ -24,9 +24,9 @@ public interface AbstractSubject extends Subject {
     }
 
     @Override
-    default void notifyObserver(Product product) {
+    default void notifyObserver() {
         for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).update(product);
+            observers.get(i).update((Product) this);
         }
 
     }

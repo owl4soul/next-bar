@@ -1,6 +1,5 @@
 package bar.tools.observatory;
 
-import bar.products.Product;
 
 public interface Subject {
 
@@ -8,5 +7,5 @@ public interface Subject {
 
     void removeObserver(Observer observer);
 
-    void notifyObserver(Product product);
+    void notifyObserver();
 }

@@ -7,21 +7,20 @@ import bar.products.Product;
 import bar.tools.Calculator;
 import bar.tools.observatory.AbstractSubject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Drink extends Product implements AbstractSubject {
     public Recipe drinkRecipe;
     public Map<Product, Integer> consist;
+    private static int serialNumber = 1;
 
 
     public Drink(DrinkBuilder drinkBuilder) {
         super(drinkBuilder);
         this.drinkRecipe = drinkBuilder.drinkRecipe;
         this.consist = drinkBuilder.consist;
-
-//        AbstractSubject.super.notifyObserver(this); //TODO BUG IS HERE
+        serialNumber++;
     }
 
 
@@ -69,6 +68,9 @@ public class Drink extends Product implements AbstractSubject {
         return this;
     }
 
+    public static int getSerialNumber() {
+        return serialNumber;
+    }
 
     @Override
     public void show() {

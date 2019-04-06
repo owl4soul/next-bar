@@ -4,13 +4,14 @@ import bar.products.Ingredient;
 import bar.products.Product;
 import bar.products.drinks.Drink;
 import bar.tools.Tools;
+import bar.tools.observatory.AbstractSubject;
 
 import java.util.ArrayList;
 
 import java.util.List;
 
-public class Bar {
-    public static Product orderByRecipe() {
+public class Bar implements AbstractSubject {
+    private static Product orderByRecipe() {
         System.out.println("Какой напиток закажете?");
         System.out.println();
         for (int i = 0; i < Recipe.values().length; i++) {
@@ -18,13 +19,13 @@ public class Bar {
         }
         int userInput = Tools.readInteger();
         if (userInput >= 0 & userInput < Recipe.values().length) {
-            return new Drink.DrinkBuilder().addName("COFFEE").addCost(100).setConsist(Recipe.values()[userInput]).build();
+            return new Drink.DrinkBuilder().addName("COFFEE #" + Drink.getSerialNumber()).addCost(100).setConsist(Recipe.values()[userInput]).build();
         } else {
             return null;
         }
     }
 
-    public static void orderAddition(Product product) {
+    private static Product orderWithAddition(Product product) {
         List<String> productsList = new ArrayList<>();
         for (String prodName : Ingredient.ingredients.keySet()) {
             productsList.add(prodName);
@@ -39,10 +40,17 @@ public class Bar {
             String nameOFSelected = productsList.get(userInput);
             Product selectedAddition = Ingredient.ingredients.get(nameOFSelected);
             ((Drink) product).addAddition((Ingredient) selectedAddition, 1);
-            orderAddition(product);
+            orderWithAddition(product);
         } else {
-            ((Drink) product).notifyObserver(product);
-            return;
+//            ((Drink) product).notifyObserver();
+            return product;
         }
+        return product;
+    }
+
+    public Drink createDrink() {
+        Drink drink = (Drink) orderWithAddition(orderByRecipe());
+        drink.notifyObserver();
+        return drink;
     }
 }

@@ -12,18 +12,22 @@ public class Tools {
             String inputString = reader.readLine();
             return inputString;
         } catch (IOException e) {
-            System.out.println("ОШИБКА ПРИ ВВОДЕ СТРОКИ!");
-            e.printStackTrace();
+            System.out.println("ОШИБКА ПРИ ВВОДЕ СТРОКИ! Попробуйте еще раз: ");
+            readString();
         }
         return null;
 
     }
 
     public static int readInteger() {
-        String inputString = readString();
-        int inputInt = Integer.parseInt(inputString);
-        return inputInt;
-
+        try {
+            String inputString = readString();
+            int inputInt = Integer.parseInt(inputString);
+            return inputInt;
+        } catch (NumberFormatException e) {
+            System.out.println("ОШИБКА ПРИ ВВОДЕ ЧИСЛА! Попробуйте еще раз: ");
+        }
+        return readInteger();
     }
 
     public static String[] parseSubstrings(String input) {
