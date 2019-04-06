@@ -9,6 +9,7 @@ import java.util.Map;
 public class Ingredient extends Product implements AbstractSubject, Nomenclature {
     public static Map<String, Product> ingredients = new HashMap<>();
 
+    public static final Ingredient NULL = (Ingredient) new IngredientBuilder().addName("NULL").addCost(0).build();
     public static final Ingredient SHOT = (Ingredient) new IngredientBuilder().addName("SHOT").addCost(20).build();
     public static final Ingredient MILK = (Ingredient) new IngredientBuilder().addName("MILK").addCost(30).build();
     public static final Ingredient SUGAR = (Ingredient) new IngredientBuilder().addName("SUGAR").addCost(1).build();

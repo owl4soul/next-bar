@@ -1,9 +1,11 @@
 package bar.tools;
 
 import bar.Stock;
+import bar.products.Ingredient;
 import bar.products.Product;
 import bar.products.drinks.Drink;
 
+import java.util.Map;
 import java.util.Set;
 
 public interface Stockable {
@@ -30,6 +32,26 @@ public interface Stockable {
             s.stock.put(name, resultCountValue);
 
         }
+    }
+
+    static boolean checkAvailability(Product product, int countToAdd, Stock... stocks) {
+        for (Stock s : stocks) {
+            if (s.getStock().containsKey(product.getName())) {
+                if (s.getStock().get(product.getName()) >= countToAdd) {
+                    return true;
+                } else return false;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    static boolean checkAvailabilityAll(Map<Product, Integer> recipe, Stock... stocks) {
+        for (Map.Entry<Product, Integer> entry : recipe.entrySet()) {
+            return checkAvailability(entry.getKey(), entry.getValue(), stocks);
+        }
+        return false;
     }
 
     static void removeCountFromStock(Stock s, String name, int countToRemove) {

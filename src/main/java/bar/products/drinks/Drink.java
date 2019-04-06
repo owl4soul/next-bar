@@ -1,10 +1,12 @@
 package bar.products.drinks;
 
 import bar.Recipe;
+import bar.Stock;
 import bar.products.Ingredient;
 import bar.products.Product;
 
 import bar.tools.Calculator;
+import bar.tools.Stockable;
 import bar.tools.observatory.AbstractSubject;
 
 import java.util.HashMap;
@@ -28,7 +30,6 @@ public class Drink extends Product implements AbstractSubject {
     public static class DrinkBuilder extends Builder {
         public Recipe drinkRecipe;
         public Map<Product, Integer> consist = new HashMap<>();
-//        public ArrayList<String> noWayAdd = new ArrayList<>();
 
 
         public DrinkBuilder addName(String name) {
@@ -42,8 +43,13 @@ public class Drink extends Product implements AbstractSubject {
 
         public DrinkBuilder setConsist(Recipe recipe) {
             drinkRecipe = recipe;
-            consist = recipe.recipe;
-            return this;
+            if (Stockable.checkAvailabilityAll(recipe.recipe, Stock.getGeneralStock())) {
+                consist = recipe.recipe;
+                return this;
+            } else {
+                consist.put(Ingredient.NULL, 0);
+                return this;
+            }
         }
 
         @Override
@@ -63,13 +69,21 @@ public class Drink extends Product implements AbstractSubject {
             }
             int countAdded = count;
             int countUpdated = countPrimordial + countAdded;
-            this.consist.put(ingredient, countUpdated);
+            if (Stockable.checkAvailability(ingredient, countUpdated, Stock.getGeneralStock())) {
+                this.consist.put(ingredient, countUpdated);
+            } else {
+                System.out.println("Не хватает ингредиентов! " + ingredient.getName() + " отсутствует на складе");
+            }
         }
         return this;
     }
 
     public static int getSerialNumber() {
         return serialNumber;
+    }
+
+    public Map<Product, Integer> getConsist() {
+        return consist;
     }
 
     @Override

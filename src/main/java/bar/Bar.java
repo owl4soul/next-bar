@@ -19,13 +19,22 @@ public class Bar implements AbstractSubject {
         }
         int userInput = Tools.readInteger();
         if (userInput >= 0 & userInput < Recipe.values().length) {
-            return new Drink.DrinkBuilder().addName("COFFEE #" + Drink.getSerialNumber()).addCost(100).setConsist(Recipe.values()[userInput]).build();
+            Product drink = new Drink.DrinkBuilder().addName("COFFEE #" + Drink.getSerialNumber()).addCost(100).setConsist(Recipe.values()[userInput]).build();
+            if (((Drink) drink).getConsist().containsKey(Ingredient.NULL)) {
+                System.out.println("НЕВОЗМОЖНО СОЗДАТЬ НАПИТОК, НЕ ХВАТАЕТ ОСНОВНЫХ ИНГРЕДИЕНТОВ!");
+                return drink;
+            } else {
+                return drink;
+            }
         } else {
             return null;
         }
     }
 
     private static Product orderWithAddition(Product product) {
+        if (((Drink) product).getConsist().containsKey(Ingredient.NULL)) {
+            return product;
+        }
         List<String> productsList = new ArrayList<>();
         for (String prodName : Ingredient.ingredients.keySet()) {
             productsList.add(prodName);
@@ -33,6 +42,9 @@ public class Bar implements AbstractSubject {
         System.out.println("Выберите добавки к напитку: ");
         System.out.println();
         for (int i = 0; i < productsList.size(); i++) {
+            if (productsList.get(i) == "NULL") {
+                continue;
+            }
             System.out.println(i + " - " + productsList.get(i));
         }
         int userInput = Tools.readInteger();
@@ -50,7 +62,9 @@ public class Bar implements AbstractSubject {
 
     public Drink createDrink() {
         Drink drink = (Drink) orderWithAddition(orderByRecipe());
-        drink.notifyObserver();
+        if (!(drink.getConsist().containsKey("NuLL"))) {
+            drink.notifyObserver();
+        }
         return drink;
     }
 }
